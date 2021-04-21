@@ -9,6 +9,7 @@ const mongoose = require("mongoose")
 const cookieParser = require("cookie-parser")
 const path = require("path")
 const config = require("./config.json")
+let PORT = process.env.PORT || 80
 app.use(cors())
 app.use(cookieParser())
 app.use(express.json())
@@ -83,7 +84,7 @@ app.set('socketio', io)
 
 async function start(){
     try{
-        server.listen(3001)
+        server.listen(PORT)
         await mongoose.connect(config.dbUrl,{useNewUrlParser: true})
     }
     catch(e){
