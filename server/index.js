@@ -24,19 +24,17 @@ io.of("/notification").on("connection",(socket)=>{
     socket.on("private",(data)=>{socket.join(data.userId)})  
 })
 io.of("/chat").on("connection", (socket)=>{
-    socket.use((s,next)=>{
-        console.log(socket.handshake.headers)
-        // let token = socket.handshake.headers?.cookie.slice(6)
-        // jwt.verify(token,config.jwt,(err)=>{
-        //     if(err){
-        //      socket.emit("not_auth",true)
-        //      next(err)
-        //     }
-        //     else{
-                next()
-        //     }
-        // })
+    socket.on("message",async({newMessage,myId,chatRoom})=>{
+        const e = await Message.findOne({chatId:chatRoom}).select("messages")
+        let id = uuid.v4()
+        if(e){
+            e.messages.push({id:id,from:myId,body:newMessage,createdAt:{time:new Date().toLocaleTimeString(), date: new Date().toLocaleDateString()}})
+            await e.save()
+      }
+      io.of("/chat").to(chatRoom).emit("sendMessage",{id:id,from:myId,body:newMessage,createdAt:{time:new Date().toLocaleTimeString(), date: new Date().toLocaleDateString()}})
     })
+
+
     socket.on("USER:COONECT", async(data)=>{
         let room = data.me.chatPriority > data.chatUser.chatPriority ? data.me.id + data.chatUser.id : data.chatUser.id + data.me.id
         const message = await Message.findOne({chatId:room}).select("messages")
@@ -49,15 +47,8 @@ io.of("/chat").on("connection", (socket)=>{
         else{
             io.of("/chat").to(room).emit("ROOM:FOUND",true)
         }
-        socket.on("message",async(newMessage)=>{
-            const e = await Message.findOne({chatId:room}).select("messages")
-            let id = uuid.v4()
-            if(e){
-                e.messages.push({id:id,from:data.me.id,body:newMessage,createdAt:{time:new Date().toLocaleTimeString(), date: new Date().toLocaleDateString()}})
-                await e.save()
-          }
-          io.of("/chat").to(room).emit("sendMessage",{id:id,from:data.me.id,body:newMessage,createdAt:{time:new Date().toLocaleTimeString(), date: new Date().toLocaleDateString()}})
-        })
+        
+        
         socket.on("delete_message",async (id)=>{
             let isDeleted = false
             try{

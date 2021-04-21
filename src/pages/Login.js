@@ -1,17 +1,18 @@
 import React, { useState,useEffect, useCallback} from 'react'
 import {actionLogin} from '../redux/action/actionLogin'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect, useHistory} from 'react-router'
+import { Redirect} from 'react-router'
 import { actionAuth } from "../redux/action/actionLogin"
 const month = ['Января','Февраля','Марта','Апреля','Мая','Июня','Июля','Августа','Сентября','Октября','Ноября','Декабря']
 const Login = ()=>{
     const dispatch = useDispatch()
     const {isAuth,error,id,isLoaded,login} = useSelector(({login})=>login)
-    const [err,setErr] = useState('')
+    const [errRegister,setErrRegister] = useState('')
+    const [errLogin,setErrLogin] = useState('')
     const [reg_message,setReg_message] = useState('')
     const [loaded,setLoaded] = useState(true)
     const registerHandler = useCallback((event) =>{
-        setErr('')
+        setErrRegister('')
         setReg_message("")
         event.preventDefault()
         let body = {}
@@ -22,10 +23,11 @@ const Login = ()=>{
 
        for(let key in body){
            if(!body[key].trim()){
-               setErr("Заполните все поля")
+            setErrRegister("Заполните все поля")
                return
            }
        }
+       body.chatPriority = Math.random() * 100
        setLoaded(false)
        fetch("/register",{method:"POST",body:JSON.stringify(body),headers:{'Content-Type': 'application/json'}})
        .then(async data => {
@@ -42,7 +44,7 @@ const Login = ()=>{
          }
          for(let key in body){
             if(!body[key].trim()){
-                setErr("Заполните все поля")
+                setErrLogin("Заполните все поля")
                 return
             }
         }
@@ -67,6 +69,7 @@ const Login = ()=>{
                             <input placeholder="email" name="email" />
                             <input placeholder="password" name="password" />
                             <button disabled={!isLoaded && true} type="submit">Войти</button>
+                            <span style={{color:"red"}}>{errLogin && errLogin}</span>
                         </form>
                     </div>
                     <div className="register">
@@ -87,7 +90,7 @@ const Login = ()=>{
                             
                             </div>
                             <button disabled={!loaded && true} type="submit">{loaded ? "Регистрация":"Загрузка"}</button>
-                            <span style={{color:"red"}}>{err && err}</span>
+                            <span style={{color:"red"}}>{errRegister && errRegister}</span>
                         </form>
                     </div>
                 </div>

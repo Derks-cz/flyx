@@ -4,7 +4,6 @@ const router = express.Router();
 const config = require("../../config.json")
 const User = require('../../models/User')
 const Ajv = require("ajv").default
-const mongoose = require("mongoose")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 const ajv = new Ajv({allErrors: true})
@@ -18,13 +17,16 @@ const schema ={
         "surname":{type:"string",minLength:4,maxLength:13,pattern:"^[А-Я][а-я]{0,}[^А-Я]"},
         "day":{type:"integer",minimum:1,maximum:31},
         "month":{type:"string"},
-        "year":{type:"integer",minimum:1930,maximum:2016}
+        "year":{type:"integer",minimum:1930,maximum:2016},
+        "chatPriority":{type:"number"}
     }
 }
     router.post("/register",async (req,res)=>{
         const body = req.body
         body.day = parseInt(body.day)
         body.year = parseInt(body.year)
+        body.chatPriority = parseFloat(body.chatPriority)
+        console.log(body)
         try{
             const validate = ajv.compile(schema)
             const valid = validate(body)
@@ -58,7 +60,7 @@ const schema ={
             }
             
             const bpassword = await bcrypt.hash(body.password,7)
-            const user = new User({email:body.email,password:bpassword,name:body.name,surname:body.surname,brithday:{day:body.day,month:body.month,year:body.year}})
+            const user = new User({email:body.email,chatPriority:body.chatPriority,password:bpassword,name:body.name,surname:body.surname,brithday:{day:body.day,month:body.month,year:body.year}})
             await user.save()
             res.send("Пользователь создан")
             

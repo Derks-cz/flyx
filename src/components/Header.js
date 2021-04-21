@@ -55,7 +55,7 @@ const Header = () =>{
                     <div className="links">
                     {isAuth ? 
                     <div style={{display:"flex"}}><Link to={`/profile/${id}`}>Профиль</Link><div id="open" onClick={openModal} style={{marginLeft:"10px",cursor:"pointer"}}>&#128365;</div>
-                    <sub style={{color:"red",padding:"5px"}}>{invite.invitesFrom.length}</sub><div style={{cursor:"pointer"}} onClick={logOut}>Выйти</div></div> :
+                    <sub style={{color:"red",padding:"5px"}}>{invite.invitesFrom.length&& invite.invitesFrom.length}</sub><div style={{cursor:"pointer"}} onClick={logOut}>Выйти</div></div> :
                     <Link to="/login">Войти</Link>}
                     </div>
                 </div>

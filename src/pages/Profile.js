@@ -42,11 +42,11 @@ const Profile = ({match}) =>{
     useEffect(()=>{
         if(!isAuth) history.push("/login")
     },[isAuth,history])
-    useDebouncedEffect(()=>{
+    useEffect(()=>{
         if(paramsId !== null){
           dispatch(actionProfile(paramsId))
         }
-    },10,[paramsId,invite.acceptInvite,acceptInvite,removeProfileFriend])
+    },[paramsId,invite.acceptInvite,acceptInvite,removeProfileFriend])
     useEffect(()=>{
         if(!profile.found){
             history.push(`/profile/${id}`)

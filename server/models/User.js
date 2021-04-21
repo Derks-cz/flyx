@@ -9,7 +9,7 @@ const User = Schema({
     invitesFrom:[{type:ObjectId,ref:"Users"}],
     brithday:{day:{type:Number,required:true}, month:{type:String,required:true},year:{type:Number,required:true}},
     dialogs:[{type:ObjectId,ref:"Users"}],
-    chatPriority:{type:Number,default:Math.random()*100},
+    chatPriority:{type:Number,required:true},
     friend:[{type:ObjectId, ref:"Users"}],
     blackList:[{type:ObjectId, ref:"Users"}]
 })
