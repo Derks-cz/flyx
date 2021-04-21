@@ -1,0 +1,23 @@
+@import './_header.css';
+@import './_login.css';
+@import './_profile.css';
+@import './_modal.css';
+@import './_dialogs.css';
+@import './_chat.css';
+@import './_find_friend.css';
+@import './_loading.css';
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+body {
+  background: #EFEFEF;
+}
+.container{
+  max-width: 1270px;
+  margin: 0 auto 20px auto;
+  padding: 0 15px;
+}

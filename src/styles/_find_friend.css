@@ -1,0 +1,43 @@
+.find_friend{
+    margin-left:60px;
+    background:white;
+    padding:10px;
+    width:50%;
+}
+.input_find{
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+.form_find_friend{
+    display: flex;
+    justify-content: center;
+}
+.form_find_friend input{
+    padding: 6px;
+    width: 70%;
+    border-radius: 5px;
+}
+.form_find_friend button{
+    width:100px;
+    border-radius: 5px;
+    background-color: #9FEE00;
+    cursor: pointer;
+}
+.found_users{
+    padding: 5px;
+}
+.found_user{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 4px;
+}
+.found_user img{
+    margin-right: 3px;
+}
+.found_user:hover{
+    cursor: pointer;
+    background-color: honeydew;
+}

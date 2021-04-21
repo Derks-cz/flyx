@@ -1,0 +1,26 @@
+.dialogs{
+    display: flex;
+    width: 100%;
+}
+
+.all_dialogs{
+    margin-left: 60px;
+    background-color: white;
+    width: 50%;
+    padding: 10px;
+}
+
+.dialogs_list{
+    display: flex;
+    flex-direction: column;
+}
+.dialog{
+    display: flex;
+    border: 1px solid black;
+    padding: 5px;
+    align-items: center;
+    margin: 1px;
+}
+.dialog:hover{
+    background-color: rgb(230, 230, 230);
+}

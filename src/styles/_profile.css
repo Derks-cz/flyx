@@ -1,0 +1,89 @@
+.profile{
+    display: flex;
+    width: 100%;
+}
+.profile_links{
+    display: flex;
+    flex-direction: column;
+}
+.links_box{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+.links_box a{
+    padding: 7px;
+    margin: 3px;
+}
+.links_box a:hover{
+    background-color: gray;
+}
+.friend_list{
+    margin-top: 35px;
+    padding: 10px;
+    background-color: white;
+}
+.friend{
+    padding: 7px 7px 7px 0;
+}
+.friend:hover{
+    border-bottom: 1px solid black;
+}
+.content{
+    margin-left: 60px;
+    flex:1 0 10%;
+    padding: 10px;
+    background-color: white;
+}
+.profile_info{
+    width: 100%;
+}
+.profile_brithday{
+    display: flex;
+}
+.profile_brithday p{
+    margin-top: 5px;
+}
+.avatar{
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+    margin-right: 40px;
+}
+.add_friend{
+    text-align: center;
+    margin-top: 10px;
+    width: 180px;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: #9FEE00;
+}
+.add_friend:hover{
+    cursor: pointer;
+    border-bottom: 1px solid black;
+}
+
+.remove_friend{
+    text-align: center;
+    margin-top: 10px;
+    width: 180px;
+    padding: 8px;
+    border-radius: 4px;
+    background-color: red;
+}
+
+.remove_friend:hover{
+    cursor: pointer;
+    background-color: rgb(177, 10, 10);
+}
+
+.link_to_dialog{
+    text-align: center;
+    background-color: #bfe2ff;
+    padding: 7px;
+    border-radius: 4px;
+    width: 180px;
+}
+.link_to_dialog:hover{
+    background-color:#8dcafc ;
+}

@@ -1,0 +1,123 @@
+.chat{
+    background-color: white;
+    margin-left: 60px;
+    overflow: hidden;
+    border-radius: 2px;
+    min-height: 800px;
+    width: 40%;
+}
+.chat_header{
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+.messages{
+    overflow-y: scroll;
+    height: 710px;
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+.message_wrap{
+    display: flex;
+    max-width: 70%;
+    flex-direction: column;
+}
+.chat_message{
+    position: relative;
+    padding: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.delete_message{
+    position: absolute;
+    right: 5px;
+    top:5px;
+    display: none;
+    z-index: 100;
+}
+.chat_message:hover{
+    background-color:rgb(194, 192, 192) ;
+}
+.chat_message:hover .delete_message{
+    display: block;
+    cursor: pointer;
+}
+.my_chat_message{
+    justify-content: flex-end;
+}
+.my_chat_message .message_time{
+    text-align: right;
+}
+.my_chat_message .body_message{
+    background-color: #bfe2ff;
+}
+.message_time{
+    font-size: 10px;
+    padding: 3px;
+    opacity: 0.4;
+}
+.body_message{
+    padding: 8px;
+    border-radius: 15px;
+    border: 1px solid #69b4f3;
+    background-color: #68bbff;
+    word-wrap: break-word;
+}
+
+.input_message{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.input_message input{
+    padding: 6px;
+    width: 300px;
+    border-radius: 3px;
+}
+
+.send_message{
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.send_message button{
+    padding: 7px;
+    line-height: 17px;
+    background: #9FEE00;
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 3px;
+}
+.send_message button:hover{
+    cursor: pointer;
+    background-color: #9FEE00;
+
+}
+.send_message button:focus{
+    outline: none;
+}
+.messages::-webkit-scrollbar-button {
+    background-repeat:no-repeat;  
+    width:6px;  
+    height:0px;
+}  
+    
+.messages::-webkit-scrollbar-track {background-color: #737270;box-shadow: 0px 0px 3px #8E8E8E inset;}  
+    
+.messages::-webkit-scrollbar-thumb {  
+    -webkit-border-radius: 5px;  
+    border-radius: 1px;
+    background-color: #9FEE00;  
+    background-image:url('http://zornet.ru/Ajaxoskrip/Aster/59610063.png');  
+    background-position:center;  
+    background-repeat:no-repeat;
+}  
+    
+.messages::-webkit-resizer{  
+    background-repeat:no-repeat;  
+    width:7px;  
+    height:0px  
+}  
+
+.messages::-webkit-scrollbar{width: 10px;}

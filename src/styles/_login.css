@@ -1,0 +1,80 @@
+.login_page{
+    display: flex;
+    justify-content: space-around;
+}
+.info{
+    padding: 10px;
+}
+.auth{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.login{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    justify-content: center;
+    background-color: #fff;
+    padding: 15px;
+    width: 240px;
+}
+.login form{
+    display: flex;
+    margin: 15px;
+    flex-direction: column;
+}
+.login form input{
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 7px;
+    margin: 5px;
+}
+.login form button{
+    padding: 7px;
+    margin: 5px;
+}
+
+.register{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    justify-content: center;
+    background-color: #fff;
+    padding: 15px;
+    margin-top: 30px ;
+    width: 240px;
+}
+
+.register form{
+    display: flex;
+    margin: 15px;
+    flex-direction: column;
+}
+.register form input{
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 7px;
+    margin: 5px;
+}
+.register form button{
+    padding: 7px;
+    margin: 5px;
+}
+.auth_message{
+    position: absolute;
+    right: 60px;
+    top: 120px;
+    opacity: 0;
+    height: 40px;
+    border-radius: 3px;
+    border: 1px solid black;
+    background-color: #E8E8E8;
+    padding: 7px;
+    transition: .5s;
+    transform: translateY(-100px);
+}
+.active_message{
+    opacity: 1;
+    transform: translateY(0);
+}
